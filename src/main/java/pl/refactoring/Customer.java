@@ -29,7 +29,7 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
 
             result += "\t" + each.getMovie().getTitle() + "\t"
-                    + String.valueOf(each.getCharge()) + "\n";
+                    + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "\n";
         }
 
         result += "You owed " + String.valueOf(calculateTotalAmount()) + "\n";
@@ -51,7 +51,8 @@ public class Customer {
         double totalAmount = 0;
         Enumeration elements = rentals.elements();
         while (elements.hasMoreElements()) {
-            totalAmount += castRental(elements).getCharge();
+            Rental rental = castRental(elements);
+            totalAmount += rental.getMovie().getCharge(rental.getDaysRented());
         }
         return totalAmount;
     }
