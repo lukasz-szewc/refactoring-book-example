@@ -38,7 +38,7 @@ public class Customer {
         return result;
     }
 
-    private double calculateFrequentRenterPoints() {
+    private int calculateFrequentRenterPoints() {
         int frequentRenterPoints = 0;
         for (Object rental : rentals) {
             Rental each = (Rental) rental;
