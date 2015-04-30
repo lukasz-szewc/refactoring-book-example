@@ -12,6 +12,7 @@ public class Customer {
         this.name = name;
     }
 
+    @SuppressWarnings("unchecked")
     public void addRental(Rental rental) {
         rentals.addElement(rental);
     }
