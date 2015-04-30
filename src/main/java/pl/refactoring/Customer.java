@@ -29,7 +29,6 @@ public class Customer {
 
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            double thisAmount = each.amountFor();
 
             frequentRenterPoints++;
 
@@ -38,8 +37,8 @@ public class Customer {
                 frequentRenterPoints++;
 
             result += "\t" + each.getMovie().getTitle() + "\t"
-                    + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+                    + String.valueOf(each.getCharge()) + "\n";
+            totalAmount += each.getCharge();
 
         }
 
