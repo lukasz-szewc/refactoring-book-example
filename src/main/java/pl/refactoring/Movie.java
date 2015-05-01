@@ -13,10 +13,6 @@ public class Movie {
         setPriceCode(priceCode);
     }
 
-    public int getPriceCode() {
-        return price.getPriceCode();
-    }
-
     public void setPriceCode(int code) {
         if (REGULAR == code) {
             price = new RegularPriceMovie();
@@ -38,9 +34,6 @@ public class Movie {
     }
 
     int calculateFrequentRenterPoints(int daysRented) {
-        int frequentRenterPoints = 1;
-        if (getPriceCode() == NEW_RELEASE && daysRented > 1)
-            frequentRenterPoints++;
-        return frequentRenterPoints;
+        return price.calculateFrequentRenterPoints(daysRented);
     }
 }
