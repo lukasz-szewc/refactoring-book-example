@@ -16,19 +16,19 @@ public class Customer {
         rentals.add(rental);
     }
 
-    public String getName() {
-        return name;
+    public String statement() {
+        String result = "Rental Record for " + name + "\n";
+        result += statementForEachRental();
+        result += "You owed " + calculateTotalAmount() + "\n";
+        result += "You earned " + calculateFrequentRenterPoints() + " frequent renter points\n";
+        return result;
     }
 
-    public String statement() {
-        String result = "Rental Record for " + getName() + "\n";
-
+    private String statementForEachRental() {
+        String result = "";
         for (Rental each : rentals) {
             result += "\t" + each.getMovieTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
         }
-
-        result += "You owed " + String.valueOf(calculateTotalAmount()) + "\n";
-        result += "You earned " + String.valueOf(calculateFrequentRenterPoints()) + " frequent renter points\n";
         return result;
     }
 
