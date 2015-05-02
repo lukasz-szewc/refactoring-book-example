@@ -28,8 +28,8 @@ public class Customer {
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
 
-            result += "\t" + each.getMovie().getTitle() + "\t"
-                    + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "\n";
+            result += "\t" + each.getMovieTitle() + "\t"
+                    + String.valueOf(each.getCharge()) + "\n";
         }
 
         result += "You owed " + String.valueOf(calculateTotalAmount()) + "\n";
@@ -52,7 +52,7 @@ public class Customer {
         Enumeration elements = rentals.elements();
         while (elements.hasMoreElements()) {
             Rental rental = castRental(elements);
-            totalAmount += rental.getMovie().getCharge(rental.getDaysRented());
+            totalAmount += rental.getCharge();
         }
         return totalAmount;
     }

@@ -10,10 +10,10 @@ public class Movie {
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        setPriceCode(priceCode);
+        initializePrice(priceCode);
     }
 
-    public void setPriceCode(int code) {
+    private void initializePrice(int code) {
         if (REGULAR == code) {
             price = new RegularPriceMovie();
         } else if (CHILDRENS == code) {
@@ -25,7 +25,7 @@ public class Movie {
         }
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
