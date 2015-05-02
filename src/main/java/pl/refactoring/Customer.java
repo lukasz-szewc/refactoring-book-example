@@ -1,20 +1,19 @@
 package pl.refactoring;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Customer {
 
     private String name;
-    private Vector rentals = new Vector();
+    private Set<Rental> rentals = new LinkedHashSet<Rental>();
 
     public Customer(String name) {
         this.name = name;
     }
 
-    @SuppressWarnings("unchecked")
     public void addRental(Rental rental) {
-        rentals.addElement(rental);
+        rentals.add(rental);
     }
 
     public String getName() {
@@ -22,43 +21,31 @@ public class Customer {
     }
 
     public String statement() {
-        Enumeration rentals = this.rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
 
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-
-            result += "\t" + each.getMovieTitle() + "\t"
-                    + String.valueOf(each.getCharge()) + "\n";
+        for (Rental each : rentals) {
+            result += "\t" + each.getMovieTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
         }
 
         result += "You owed " + String.valueOf(calculateTotalAmount()) + "\n";
         result += "You earned " + String.valueOf(calculateFrequentRenterPoints()) + " frequent renter points\n";
-
         return result;
     }
 
     private int calculateFrequentRenterPoints() {
         int frequentRenterPoints = 0;
-        for (Object rental : rentals) {
-            Rental each = (Rental) rental;
-            frequentRenterPoints += each.calculateFrequentRenterPoints();
+        for (Rental rental : rentals) {
+            frequentRenterPoints += rental.calculateFrequentRenterPoints();
         }
         return frequentRenterPoints;
     }
 
     private double calculateTotalAmount() {
         double totalAmount = 0;
-        Enumeration elements = rentals.elements();
-        while (elements.hasMoreElements()) {
-            Rental rental = castRental(elements);
+        for (Rental rental : rentals) {
             totalAmount += rental.getCharge();
         }
         return totalAmount;
-    }
-
-    private Rental castRental(Enumeration elements) {
-        return ((Rental) elements.nextElement());
     }
 
 }
