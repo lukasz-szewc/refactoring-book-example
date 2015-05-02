@@ -27,7 +27,7 @@ public class Customer {
     private String statementForEachRental() {
         String result = "";
         for (Rental each : rentals) {
-            result += "\t" + each.getMovieTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            result += "\t" + each.movieTitle() + "\t" + String.valueOf(each.calculateCharge()) + "\n";
         }
         return result;
     }
@@ -43,7 +43,7 @@ public class Customer {
     private double calculateTotalAmount() {
         double totalAmount = 0;
         for (Rental rental : rentals) {
-            totalAmount += rental.getCharge();
+            totalAmount += rental.calculateCharge();
         }
         return totalAmount;
     }

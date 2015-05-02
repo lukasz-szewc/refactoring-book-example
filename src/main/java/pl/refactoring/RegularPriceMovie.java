@@ -2,12 +2,12 @@ package pl.refactoring;
 
 public class RegularPriceMovie extends MoviePrice {
     @Override
-    int getPriceCode() {
+    int priceCode() {
         return Movie.REGULAR;
     }
 
     @Override
-    double getCharge(int daysRented) {
+    double charge(int daysRented) {
         double thisAmount = 2;
         if (daysRented > 2)
             thisAmount += (daysRented - 2) * 1.5;

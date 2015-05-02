@@ -25,12 +25,12 @@ public class Movie {
         }
     }
 
-    String getTitle() {
+    String title() {
         return title;
     }
 
-    double getCharge(int daysRented) {
-        return price.getCharge(daysRented);
+    double calculateCharge(int daysRented) {
+        return price.charge(daysRented);
     }
 
     int calculateFrequentRenterPoints(int daysRented) {

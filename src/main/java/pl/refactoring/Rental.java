@@ -14,11 +14,11 @@ public class Rental {
         return movie.calculateFrequentRenterPoints(daysRented);
     }
 
-    public String getMovieTitle() {
-        return movie.getTitle();
+    public String movieTitle() {
+        return movie.title();
     }
 
-    public double getCharge() {
-        return movie.getCharge(daysRented);
+    public double calculateCharge() {
+        return movie.calculateCharge(daysRented);
     }
 }
